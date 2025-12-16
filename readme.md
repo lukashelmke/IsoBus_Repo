@@ -54,7 +54,7 @@ Typische Anwendungsfälle:
 #### Schaltplan:
 
 <p align="center">
-  <img src="hardware/circuits/ESP32_Isobus_Client_4ChRelay.png" width="700">
+  <img src="hardware/Circuits/ESP32_Isobus_Client_4ChRelay.png" width="700">
 </p>
 
 #### CAD: 
@@ -79,7 +79,7 @@ Die Verteilerbox übernimmt folgende Aufgaben:
 ### Schaltplan: ISOBUS Verteilerbox
 
 <p align="center">
-  <img src="hardware/circuits/IsoBus_Verteiler.png" width="700">
+  <img src="hardware/Circuits/IsoBus_Verteiler.png" width="700">
 </p>
 
 entsprechende CAD dateien sind in diesem Repo ebenfalls enthalten.
