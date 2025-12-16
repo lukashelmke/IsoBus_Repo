@@ -76,7 +76,7 @@ Die Verteilerbox übernimmt folgende Aufgaben:
 
 In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32:
 
-Terminal &rarr; Verteilerbox &rarr; ESP-Client
+Terminal &harr; Verteilerbox &harr; ESP-Client
 
 
 ### Schaltplan: ISOBUS Verteilerbox
