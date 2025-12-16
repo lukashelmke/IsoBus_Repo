@@ -2,7 +2,6 @@
   <img src="VT_ObjectPool/images/g452ffdf6.png" width="70">
 </p>
 
-
 # ISOBUS VT Relais Controller  
 **ESP32 + AgIsoStack + IsoDesigner**
 
@@ -17,7 +16,7 @@ Der Virtual-Terminal-Object-Pool wurde mit dem **IsoDesigner** erstellt.
 
 ---
 
-## 📌 Projektübersicht
+## Projektübersicht
 
 Ziel dieses Projekts ist es, eine einfache und robuste ISOBUS-Bedieneinheit
 zu realisieren, mit der digitale Ausgänge (Relais) direkt über ein vorhandenes
@@ -76,6 +75,7 @@ Die Verteilerbox übernimmt folgende Aufgaben:
 - optionales zuschalten eines Abschlusswiderstands
 - Verbindung zum ESP32 über DSUB-Steckverbinder
 
+In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32
 ### Schaltplan: ISOBUS Verteilerbox
 
 <p align="center">
@@ -91,7 +91,7 @@ entsprechende CAD dateien sind in diesem Repo ebenfalls enthalten.
 *Abbildung: ISOBUS Strom- und CAN-Verteilerbox*
 
 ---
-## 🖥️ Virtual Terminal Object Pool
+## Virtual Terminal Object Pool
 
 ### Was ist ein VT Object Pool?
 
@@ -215,7 +215,7 @@ AgIsoStack stellt dafür im `VirtualTerminalClient` einen Event-Dispatcher berei
 
 ---
 
-## ⚠️ Einschränkungen
+## Einschränkungen
 
 - Keine Rückmeldung des Relaisstatus im VT
 - Kein Task Controller Support
@@ -223,7 +223,7 @@ AgIsoStack stellt dafür im `VirtualTerminalClient` einen Event-Dispatcher berei
 
 ---
 
-## 🧠 Mögliche Erweiterungen
+## Mögliche Erweiterungen
 
 - Anzeige des Relaisstatus im VT
 - Task Controller Integration
