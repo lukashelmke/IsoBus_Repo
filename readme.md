@@ -53,7 +53,7 @@ Typische Anwendungsfälle:
 #### Schaltplan:
 
 <p align="center">
-  <img src="hardware/Circuits/ESP32_Isobus_Client_4ChRelay.png" width="700">
+  <img src="hardware/Circuits/ESP_32_Client_Wiring.png" width="700">
 </p>
 
 #### CAD: 
@@ -79,7 +79,7 @@ In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal un
 ### Schaltplan: ISOBUS Verteilerbox
 
 <p align="center">
-  <img src="hardware/Circuits/IsoBus_Verteiler.png" width="700">
+  <img src="hardware/Circuits/IsoBus_Verteiler_Wiring.png" width="700">
 </p>
 
 #### CAD:
