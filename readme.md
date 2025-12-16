@@ -82,7 +82,7 @@ In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal un
   <img src="hardware/Circuits/IsoBus_Verteiler.png" width="700">
 </p>
 
-entsprechende CAD dateien sind in diesem Repo ebenfalls enthalten.
+#### CAD:
 
 <p align="center">
   <img src="hardware/CAD/IsoBus_Verteiler.PNG" width="700">
