@@ -19,7 +19,7 @@ Der Virtual-Terminal-Object-Pool wurde mit dem **IsoDesigner** erstellt.
 ## Projektübersicht
 
 Ziel dieses Projekts ist es, eine einfache und robuste ISOBUS-Bedieneinheit
-zu realisieren, mit der digitale Ausgänge (Relais) direkt über ein vorhandenes
+zu realisieren, mit der digitale Ausgänge (hier Relais) direkt über ein vorhandenes
 ISOBUS-Terminal geschaltet werden können.
 
 Typische Anwendungsfälle:
@@ -42,9 +42,6 @@ Typische Anwendungsfälle:
 - [AgIsoStack](https://agisostack-plus-plus.readthedocs.io/en/latest/index.html) (ISOBUS Stack) 
 - PlatformIO / VS Code
 - [IsoDesigner](https://www.bucherautomation.com/iso-designer/sw10133) (VT Object Pool Design)
-
-
-
 
 ---
 ## ESP32 Relais- und CAN-Modul
@@ -74,8 +71,14 @@ Die Verteilerbox übernimmt folgende Aufgaben:
 - Abgriff von CAN High und CAN Low
 - optionales zuschalten eines Abschlusswiderstands
 - Verbindung zum ESP32 über DSUB-Steckverbinder
+> Das Zuschalten des Abschlusswiderstands kann je nach Setup und Can-Modul notwendig sein.
+> Der hier verwendete Can Transceiver hat einen entsprechenden 120 Ohm Widerstand on Board, wodurch der Widerstand nicht zugeschaltet werden muss.
 
-In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32
+In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32.
+
+Terminal &rarr; Verteilerbox &rarr; ESP-Client
+
+
 ### Schaltplan: ISOBUS Verteilerbox
 
 <p align="center">
@@ -93,22 +96,81 @@ In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal un
 ---
 ## Virtual Terminal Object Pool
 
-### Was ist ein VT Object Pool?
+### Was ist ein Virtual Terminal Object Pool?
 
-Ein **Virtual Terminal Object Pool** beschreibt die komplette grafische
-Benutzeroberfläche eines ISOBUS-Gerätes:
-- Masken (Screens)
-- Buttons
-- Texte
-- Eingabeelemente
-- Macros
-- Objekt-IDs und Eigenschaften
+Ein **Virtual Terminal Object Pool** (kurz: *Object Pool*) ist die vollständige,
+maschinenlesbare Beschreibung der grafischen Benutzeroberfläche eines
+ISOBUS-Gerätes gemäß **ISO 11783-6**.
 
-Der Object Pool wird von dem ESP an das Terminal übertragen.
-Das Terminal rendert anschließend die Oberfläche und sendet
-Benutzeraktionen (z. B. Button-Drücke) über den Can Bus.
+Der Object Pool enthält **keinen Programmcode**, sondern ausschließlich
+strukturierte Daten, die dem Virtual Terminal beschreiben:
 
-### Erstellung des Object Pools mit dem IsoDesigner
+- welche Masken (Screens) existieren
+- welche grafischen Objekte enthalten sind (Buttons, Texte, Icons, etc.)
+- welche Eigenschaften diese Objekte haben
+- welche **Object-IDs** zur Identifikation verwendet werden
+
+Das Virtual Terminal rendert diese Oberfläche selbstständig und übernimmt
+die gesamte Darstellung und Bedienlogik.
+
+
+### Dateityp und Format
+
+Ein Object Pool liegt typischerweise als **binäre Datei mit der Endung `.iop`**
+vor (*ISOBUS Object Pool*).
+
+Eigenschaften der `.iop`-Datei:
+
+- binäres, kompaktes Format
+- standardisiert nach ISO 11783-6
+- herstellerunabhängig
+- nicht menschenlesbar
+- enthält ausschließlich VT-Objekte und deren Attribute
+
+Die `.iop`-Datei wird üblicherweise mit speziellen VT-Design-Werkzeugen
+(z. B. Jetter IsoDesigner) erzeugt und anschließend in das ISOBUS-Gerät integriert.
+
+
+### Übertragung und Speicherung im Virtual Terminal
+
+Der Object Pool wird **nicht permanent zyklisch übertragen**.
+
+Stattdessen erfolgt der Ablauf wie folgt:
+
+1. Das ISOBUS-Gerät meldet sich am Bus an
+2. Das Gerät erkennt ein verfügbares Virtual Terminal
+3. Der Object Pool wird **einmalig** an das Terminal übertragen
+4. Das Terminal speichert den Object Pool intern
+5. Ab diesem Zeitpunkt rendert das Terminal die Oberfläche selbstständig
+
+Nach erfolgreicher Übertragung:
+- wird der Object Pool **nicht erneut gesendet**
+- werden nur noch **Ereignisse (z. B. Button-Drücke)** übertragen
+- bleibt die grafische Oberfläche auch bei kurzen CAN-Unterbrechungen erhalten
+
+Ein erneutes Übertragen ist nur erforderlich, wenn:
+- sich der Object Pool ändert
+- das Terminal neu gestartet wird
+- oder die Verbindung explizit neu aufgebaut wird
+
+### Einbettung des Object Pools in die ESP32-Firmware
+
+In diesem Projekt ist der Object Pool **fest in die Firmware des ESP32 eingebettet**.
+
+Die `.iop`-Datei wird dabei:
+- beim Build-Prozess als Binärdaten eingebunden
+- vom Linker als Symbol in das Firmware-Image integriert
+- zur Laufzeit aus dem Flash gelesen
+
+Im Code erfolgt der Zugriff über vom Linker bereitgestellte Symbole:
+
+```cpp
+extern "C" const uint8_t object_pool_start[];
+extern "C" const uint8_t object_pool_end[];
+```
+
+
+## Erstellung des Object Pools mit dem IsoDesigner
 
 
 Der Object Pool dieses Projekts wurde mit dem [IsoDesigner](https://www.bucherautomation.com/iso-designer/sw10133) erstellt.
@@ -120,7 +182,7 @@ Der Object Pool dieses Projekts wurde mit dem [IsoDesigner](https://www.bucherau
 > Er ermöglicht das visuelle Erstellen von Masken und Bedienelementen
 > ohne manuelles Schreiben von Object-Pool-Strukturen.
 
-Ein guter Einstieg in die Software lässt sich auch über entsprechende [Tutorials](https://youtu.be/10cyF99BziY?si=aGUhjTgAsRmfgrT0)
+Ein guter Einstieg in die Software ist auch gut über entsprechende [Tutorials](https://youtu.be/10cyF99BziY?si=aGUhjTgAsRmfgrT0) möglich.
 
 
 ### Vorgehensweise (vereinfacht)
@@ -202,6 +264,21 @@ AgIsoStack stellt dafür im `VirtualTerminalClient` einen Event-Dispatcher berei
 5. Dein Callback wertet die **Object-ID** und den **KeyActivationCode** aus
 6. Daraus leitet man die gewünschte Aktion ab (hier: Relais schalten)
 
+## ⚠️ Hinweis: Object-Pool-Hash/MD5 aus dem AgIsoStack-Tutorial (ESP32)
+
+Im AgIsoStack-VT-Tutorial wird optional ein Hash (z. B. MD5-basiert) aus dem Object Pool berechnet
+(z. B. über `IOPFileInterface::hash_object_pool_to_version(...)`). Dieser Hash dient als „Version“,
+damit ein Virtual Terminal entscheiden kann, ob es einen Object Pool erneut anfordern muss oder eine
+gecachte Version laden kann.
+
+Auf dem ESP32 hat der Tutorial-Ansatz in meinem Setup jedoch wiederholt zu Problemen geführt
+(u. a. im Zusammenhang mit der Hash/MD5-Berechnung bzw. der Utility-Komponente).
+Daher verwende ich hier eine robustere Embedded-Variante:
+- der Object Pool ist als Binärdaten in die Firmware eingebettet (`object_pool_start/end`)
+- als Versionskennung wird ein fester String verwendet (z. B. `"VTPOOL"`)
+- bei einer neuen VT-Verbindung wird der Object Pool erneut zugewiesen, damit der Upload sauber startet
+
+... Der Hash ist optional und dient hauptsächlich dem Caching-Verhalten des Terminals.
 
 
 ## Build & Flash
