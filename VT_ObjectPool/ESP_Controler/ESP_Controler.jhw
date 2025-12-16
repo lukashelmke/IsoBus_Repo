@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JetViewSoft-Hardware-Tree>
+  <HardwareList>
+    <Hardware Name="ME1200" ServiceID=".\Device 480x480\Device 480x480.xml" guid="05c4671f-ef4a-4e77-b7b1-32d29efe7a2f" />
+  </HardwareList>
+  <ExternalDataSources>
+    <OpcUaConnections />
+  </ExternalDataSources>
+  <Cameras />
+</JetViewSoft-Hardware-Tree>

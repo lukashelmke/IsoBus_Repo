@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JetView-Project ProductVersion="5.7.1.6514" PlatformID="8" Flags="0" StartPage=".\Home.jvi" StartPageExtended="" NeedsWorkingSet="1" NeedsStartPage="1">
+  <Item NodeName="Languages" guid="8165fcc1-fd5a-49f2-b9ce-b8dc17a49b1f" />
+  <Item NodeName="Resources" guid="405de07a-463d-4872-ab34-21e3c3140455">
+    <Item Path=".\Devices_ESP_Controler.jrc" guid="b28d1bb4-adb1-4b90-b630-c451f6fc2d7d" Flags="0" ResourceNamespace="Devices_ESP_Controler" ResourceFileType="Hardware Resource" />
+  </Item>
+  <Item NodeName="Visualisation" guid="328b3d0d-6b3e-4cf1-b112-a99a05326db3">
+    <Item Path=".\WorkingSet_0.jvi" guid="d4401d92-5da2-415e-8c4c-142d8af33d1f" Flags="0" />
+    <Item Path=".\Home.jvi" guid="cae64f1d-a30f-4072-befb-3b98bad25b31" Flags="0" />
+  </Item>
+</JetView-Project>

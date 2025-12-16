@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JetViewSoft-DefaultObjects Version="3.0" ProductVersion="5.7.1.6514" RelatedObjectPool=".\ESP_Controler.jop">
+	<Objects>
+		<Object Class="CButton">
+			<Objects>
+				<Object Class="CFontStyle" JVS-ID="23003" ObjectName="FontAttributes_23003"/>
+			</Objects>
+		</Object>
+		<Object Class="COutputNumber">
+			<Objects>
+				<Object Class="CNumberVariable" JVS-ID="21000" ObjectName="Tone_Val"/>
+				<Object Class="CFontStyle" JVS-ID="23008" ObjectName="FontAttributes_23008"/>
+			</Objects>
+		</Object>
+		<Object Class="COutputText">
+			<Objects>
+				<Object Class="CFontStyle" JVS-ID="23007" ObjectName="UE"/>
+			</Objects>
+		</Object>
+		<Object Class="GraphicObject">
+			<Objects>
+				<Object Class="CLineStyle" JVS-ID="24001" ObjectName="LineAttributes_24001"/>
+				<Object Class="CFillStyle" JVS-ID="25001" ObjectName="TH_Header"/>
+			</Objects>
+		</Object>
+	</Objects>
+</JetViewSoft-DefaultObjects>

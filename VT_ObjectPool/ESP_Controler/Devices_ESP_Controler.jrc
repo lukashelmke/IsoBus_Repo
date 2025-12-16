@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<JetView-Resource ProductVersion="0.0.0.0" ResourceFileType="Hardware Resource">
+  <Languages>
+    <Language Name="English" Code="en" Default="True" />
+  </Languages>
+  <ISODevices>
+    <ISODevice guid="05c4671f-ef4a-4e77-b7b1-32d29efe7a2f" />
+  </ISODevices>
+  <Resources></Resources>
+</JetView-Resource>
