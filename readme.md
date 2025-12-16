@@ -14,7 +14,7 @@ Der ESP32 fungiert dabei als **Virtual Terminal Client** und nutzt die
 Open-Source-Bibliothek **AgIsoStack** zur ISOBUS-Kommunikation.
 Der Virtual-Terminal-Object-Pool wurde mit dem **IsoDesigner** erstellt.
 
----
+
 
 ## Projektübersicht
 
@@ -27,7 +27,7 @@ Typische Anwendungsfälle:
 - Prototyping von ISOBUS-Funktionen
 - Lernen und Verstehen der ISOBUS-VT-Kommunikation
 
----
+
 
 ## Systemarchitektur
 
