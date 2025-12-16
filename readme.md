@@ -39,9 +39,10 @@ Typische Anwendungsfälle:
 - D-SUB 9Pin Stecker und Buchsen
 
 ### Software-Komponenten
-- [AgIsoStack](https://agisostack-plus-plus.readthedocs.io/en/latest/index.html) (ISOBUS Stack) 
-- PlatformIO / VS Code
+
 - [IsoDesigner](https://www.bucherautomation.com/iso-designer/sw10133) (VT Object Pool Design)
+- [VSCode](https://code.visualstudio.com) + [PlatformIO](https://platformio.org)
+- [AgIsoStack](https://agisostack-plus-plus.readthedocs.io/en/latest/index.html) (ISOBUS Stack) 
 
 ---
 ## ESP32 Relais- und CAN-Modul
@@ -61,7 +62,6 @@ Typische Anwendungsfälle:
 
 *Abbildung: ESP32 mit Relais und CAN Modul*
 
----
 
 ## ISOBUS Verteilerbox
 
@@ -74,7 +74,7 @@ Die Verteilerbox übernimmt folgende Aufgaben:
 > Das Zuschalten des Abschlusswiderstands kann je nach Setup und Can-Modul notwendig sein.
 > Der hier verwendete Can Transceiver hat einen entsprechenden 120 Ohm Widerstand on Board, wodurch der Widerstand nicht zugeschaltet werden muss.
 
-In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32.
+In dem Gesamtaufbau hängt die Verteilerbox also zwischen dem Isobus Terminal und dem Esp32:
 
 Terminal &rarr; Verteilerbox &rarr; ESP-Client
 
@@ -100,7 +100,7 @@ Terminal &rarr; Verteilerbox &rarr; ESP-Client
 
 Ein **Virtual Terminal Object Pool** (kurz: *Object Pool*) ist die vollständige,
 maschinenlesbare Beschreibung der grafischen Benutzeroberfläche eines
-ISOBUS-Gerätes gemäß **ISO 11783-6**.
+ISOBUS-Gerätes gemäß **ISO 11783**.
 
 Der Object Pool enthält **keinen Programmcode**, sondern ausschließlich
 strukturierte Daten, die dem Virtual Terminal beschreiben:
@@ -114,7 +114,7 @@ Das Virtual Terminal rendert diese Oberfläche selbstständig und übernimmt
 die gesamte Darstellung und Bedienlogik.
 
 
-### Dateityp und Format
+## Dateityp und Format
 
 Ein Object Pool liegt typischerweise als **binäre Datei mit der Endung `.iop`**
 vor (*ISOBUS Object Pool*).
@@ -131,7 +131,7 @@ Die `.iop`-Datei wird üblicherweise mit speziellen VT-Design-Werkzeugen
 (z. B. Jetter IsoDesigner) erzeugt und anschließend in das ISOBUS-Gerät integriert.
 
 
-### Übertragung und Speicherung im Virtual Terminal
+## Übertragung und Speicherung im Virtual Terminal
 
 Der Object Pool wird **nicht permanent zyklisch übertragen**.
 
@@ -153,7 +153,7 @@ Ein erneutes Übertragen ist nur erforderlich, wenn:
 - das Terminal neu gestartet wird
 - oder die Verbindung explizit neu aufgebaut wird
 
-### Einbettung des Object Pools in die ESP32-Firmware
+## Einbettung des Object Pools in die ESP32-Firmware
 
 In diesem Projekt ist der Object Pool **fest in die Firmware des ESP32 eingebettet**.
 
@@ -169,6 +169,7 @@ extern "C" const uint8_t object_pool_start[];
 extern "C" const uint8_t object_pool_end[];
 ```
 
+---
 
 ## Erstellung des Object Pools mit dem IsoDesigner
 
@@ -200,6 +201,8 @@ Die erzeugte `.iop` Datei wird anschließend:
 - ins ESP32-Firmwareprojekt eingebunden (`firmware/object_pool/ESP_Controler.iop`)
 - beim Start des ESP an das Virtual Terminal übertragen
 
+
+---
 
 ## Firmware (ESP32)
 
