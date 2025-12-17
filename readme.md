@@ -283,7 +283,7 @@ AgIsoStack stellt dafür im `VirtualTerminalClient` einen Event-Dispatcher berei
 
 ## ⚠️ Hinweis: Object-Pool-Hash/MD5 aus dem AgIsoStack-Tutorial (ESP32)
 
-Im AgIsoStack-VT-Tutorial wird optional ein Hash (z. B. MD5-basiert) aus dem Object Pool berechnet
+Im AgIsoStack-VT-Tutorial wird optional ein Hash (MD5-basiert) aus dem Object Pool berechnet
 (z. B. über `IOPFileInterface::hash_object_pool_to_version(...)`). Dieser Hash dient als „Version“,
 damit ein Virtual Terminal entscheiden kann, ob es einen Object Pool erneut anfordern muss oder eine
 gecachte Version laden kann.
