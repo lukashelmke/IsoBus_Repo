@@ -1,5 +1,8 @@
 <p align="right">
-  <img src="VT_ObjectPool/images/g452ffdf6.png" width="70">
+<small><em>Klick mich</em></small><br>
+  <a href="https://www.th-owl.de/en/studies/available-courses/degree-programs/detail/precision-farming/" target="_blank">
+    <img src="VT_ObjectPool/images/g452ffdf6.png" width="70">
+  </a>
 </p>
 
 # ISOBUS VT Relais Controller  
@@ -122,7 +125,7 @@ vor (*ISOBUS Object Pool*).
 Eigenschaften der `.iop`-Datei:
 
 - binäres, kompaktes Format
-- standardisiert nach ISO 11783-6
+- standardisiert nach ISO 11783
 - herstellerunabhängig
 - nicht menschenlesbar
 - enthält ausschließlich VT-Objekte und deren Attribute
@@ -183,7 +186,7 @@ Der Object Pool dieses Projekts wurde mit dem [IsoDesigner](https://www.bucherau
 > Er ermöglicht das visuelle Erstellen von Masken und Bedienelementen
 > ohne manuelles Schreiben von Object-Pool-Strukturen.
 
-Ein guter Einstieg in die Software ist auch gut über entsprechende [Tutorials](https://youtu.be/10cyF99BziY?si=aGUhjTgAsRmfgrT0) möglich.
+Ein guter Einstieg in die Software ist auch über entsprechende [Tutorials](https://youtu.be/10cyF99BziY?si=aGUhjTgAsRmfgrT0) möglich.
 
 
 ### Vorgehensweise (vereinfacht)
@@ -306,9 +309,9 @@ curl -L https://github.com/lukashelmke/IsoBus_VT_Client_ESP32_Repo/archive/refs/
 
 1. VS Code installieren
 2. PlatformIO Extension installieren
-3. Projektordner `firmware` öffnen
+3. Projektordner `firmware` herunterladen (siehe oben)
 4. ESP32 per USB anschließen
-5. PThreads und FreeRTOS anpassen
+5. PThreads und FreeRTOS anpassen ([im Tutorial erklärt](https://agisostack-plus-plus.readthedocs.io/en/latest/Tutorials/ESP32%20PlatformIO.html))
 5. Build & Upload ausführen
 
 ---
