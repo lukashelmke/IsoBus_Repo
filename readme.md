@@ -65,7 +65,7 @@ Typische Anwendungsfälle:
 
 *Abbildung: ESP32 mit Relais und CAN Modul*
 
-
+ 
 ## ISOBUS Verteilerbox
 
 Die Verteilerbox übernimmt folgende Aufgaben:
