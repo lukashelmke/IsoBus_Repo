@@ -8,11 +8,11 @@
 
 Dieses Projekt implementiert ein eigenes ISOBUS-Gerät auf Basis eines ESP32,
 das sich an ein ISOBUS Virtual Terminal (VT) anmeldet und über Touch-Buttons
-am Terminal vier externe Relais schaltet.
+in der Datenmaske vier externe Relais schaltet.
 
 Der ESP32 fungiert dabei als **Virtual Terminal Client** und nutzt die
 Open-Source-Bibliothek **AgIsoStack** zur ISOBUS-Kommunikation.
-Der Virtual-Terminal-Object-Pool wurde mit dem **IsoDesigner** erstellt.
+Der VT-Object-Pool wurde mit dem **IsoDesigner** erstellt.
 
 
 
@@ -294,6 +294,13 @@ Daher verwende ich hier eine robustere Embedded-Variante:
 
 ... Der Hash ist optional und dient hauptsächlich dem Caching-Verhalten des Terminals.
 
+## Firmware in VS Code herunterladen
+Mit folgendem Befehl wird **ausschließlich der Ordner `firmware`** aus dem Repository heruntergeladen und in das aktuelle Verzeichnis entpackt:
+
+```bash
+curl -L https://github.com/lukashelmke/IsoBus_VT_Client_ESP32_Repo/archive/refs/heads/main.tar.gz \
+| tar -xz --strip-components=2 IsoBus_VT_Client_ESP32_Repo-main/firmware
+```
 
 ## Build & Flash
 
