@@ -96,6 +96,11 @@ Terminal &harr; Verteilerbox &harr; ESP-Client
 
 *Abbildung: ISOBUS Strom- und CAN-Verteilerbox*
 
+### Notiz
+
+Die entsprechenden Fusion-360 Projekte sind ebenfalls in diesem Repo zu finden:
+`hardware\CAD`
+
 ---
 ## Virtual Terminal Object Pool
 
